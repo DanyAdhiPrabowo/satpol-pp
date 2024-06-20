@@ -11,8 +11,11 @@ use App\Models\User;
 class AuthController extends Controller
 {
   public function index() {
-    if(Auth::check()){
+    $scope = Auth::user()->scope;
+    if($scope === 'admin') {
       return redirect()->route('admin.dashboard');
+    } else {
+      return redirect()->route('user.dashboard');
     }
     return view('admin.auth.index');
   }
