@@ -12,12 +12,10 @@ use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller{
   public function index() {
     $scope = Auth::user()->scope;
-    if(Auth::check()){
-      if($scope === 'user') {
-        return redirect()->route('user.dashboard');
-      } else {
-        return redirect()->route('admin.dashboard');
-      }
+    if($scope === 'user') {
+      return redirect()->route('user.dashboard');
+    } else {
+      return redirect()->route('admin.dashboard');
     }
     return view('user.auth.index');
   }
