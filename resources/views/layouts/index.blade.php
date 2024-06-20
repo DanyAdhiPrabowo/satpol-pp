@@ -26,7 +26,7 @@
     @if($isAdmin) 
       @include('layouts.adminSidebar')
     @else
-      @include('layouts.usuerSidebar')
+      @include('layouts.userSidebar')
     @endif
     <!-- End left Bar -->
 

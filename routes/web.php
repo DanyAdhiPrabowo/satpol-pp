@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 
 use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\ActivityController as UserActivityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::get('/login', [UserAuthController::class, 'index'])->name('user.login');
 Route::post('/login', [UserAuthController::class, 'login']);
 
 Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+
+Route::get('activities', [UserActivityController::class, 'index']);
 
 
 
