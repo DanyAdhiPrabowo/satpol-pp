@@ -34,8 +34,8 @@
             <span class="pcoded-mtext">Daftar Kegiatan</span>
           </a>
         </li>
-        <li class="nav-item {{$url=='reports'?'active':''}}">
-          <a href="{{url('reports')}}" class="nav-link ">
+        <li class="nav-item {{$url=='report'?'active':''}}">
+          <a href="{{url('report')}}" class="nav-link ">
             <span class="pcoded-micon">
               <i class="feather icon-sidebar"></i>
             </span>

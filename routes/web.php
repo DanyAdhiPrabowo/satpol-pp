@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\ActivityController as UserActivityController;
+use App\Http\Controllers\User\ReportController as UserReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +30,16 @@ Route::get('/', function () {
 Route::get('/login', [UserAuthController::class, 'index'])->name('user.login');
 Route::post('/login', [UserAuthController::class, 'login']);
 
-Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+Route::middleware('auth')->group(function () {
+  Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+  
+  Route::get('activities', [UserActivityController::class, 'index']);
+  
+  Route::get('report', [UserReportController::class, 'index'])->name('user.report.index');
+  Route::post('report/{id}/upload', [UserReportController::class, 'upload']);
 
-Route::get('activities', [UserActivityController::class, 'index']);
-
+  Route::get('logout', [UserAuthController::class, 'logout'])->name('user.logout');
+});
 
 
 
@@ -43,7 +50,7 @@ Route::get('/admin', function(){
 Route::get('admin/login', [AdminAuthController::class, 'index'])->name('admin.login');
 Route::post('admin/login', [AdminAuthController::class, 'login']);
 
-Route::prefix('admin')-> middleware('auth')->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
 
   Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
