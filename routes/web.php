@@ -30,7 +30,7 @@ Route::get('/', function () {
 Route::get('/login', [UserAuthController::class, 'index'])->name('user.login');
 Route::post('/login', [UserAuthController::class, 'login']);
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'role:user')->group(function () {
   Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
   
   Route::get('activities', [UserActivityController::class, 'index']);
@@ -50,7 +50,7 @@ Route::get('/admin', function(){
 Route::get('admin/login', [AdminAuthController::class, 'index'])->name('admin.login');
 Route::post('admin/login', [AdminAuthController::class, 'login']);
 
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
 
   Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
