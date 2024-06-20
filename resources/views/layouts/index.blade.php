@@ -90,7 +90,11 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn  btn-secondary" data-dismiss="modal">Tutup</button>
-            <a href="{{url('admin/logout')}}" type="button" class="btn  btn-primary">Logout</a>
+            @if($isAdmin)
+              <a href="{{url('admin/logout')}}" type="button" class="btn  btn-primary">Logout</a>
+            @else
+              <a href="{{url('logout')}}" type="button" class="btn  btn-primary">Logout</a>
+            @endif
           </div>
         </div>
       </div>
