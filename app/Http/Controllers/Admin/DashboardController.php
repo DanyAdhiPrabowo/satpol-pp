@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -30,7 +31,7 @@ class DashboardController extends Controller
       'userInactive' => $userCounts->inactive,
       'activities'  => $activities,
     ];
-    return view('dashboards.index', $data);
+    return view('admin.dashboards.index', $data);
   }
 
 }

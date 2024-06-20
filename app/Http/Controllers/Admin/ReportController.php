@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Activity;
@@ -20,7 +21,7 @@ class ReportController extends Controller
     $data = [
       'activities'  => $activities,
     ];
-    return view('reports.index', $data);
+    return view('admin.reports.index', $data);
   }
   
   public function upload($id) {
@@ -33,7 +34,7 @@ class ReportController extends Controller
     $data = [
       'activity' => $activity,
     ];
-    return view('reports.upload', $data);
+    return view('admin.reports.upload', $data);
   }
 
   public function store(Request $request, $id) {

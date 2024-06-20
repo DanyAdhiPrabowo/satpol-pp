@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
@@ -15,11 +16,11 @@ class UserController extends Controller
       $users = User::where('scope', 'user')
                     ->orderBy('id', 'desc')
                     ->get();
-      return view('users.index', ['users' => $users]);
+      return view('admin.users.index', ['users' => $users]);
     }
 
     public function create(){
-      return view('users.create');
+      return view('admin.users.create');
     }
 
     public function store(Request $request) {
@@ -46,7 +47,7 @@ class UserController extends Controller
       $data = [
         'user' => $user
       ];
-      return view('users.edit', $data);
+      return view('admin.users.edit', $data);
     }
 
     public function update(Request $request, $id) {

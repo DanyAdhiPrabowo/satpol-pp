@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -13,7 +14,7 @@ class AuthController extends Controller
     if(Auth::check()){
       return redirect()->route('admin.dashboard');
     }
-    return view('auth.index');
+    return view('admin.auth.index');
   }
 
   public function login(Request $request) {

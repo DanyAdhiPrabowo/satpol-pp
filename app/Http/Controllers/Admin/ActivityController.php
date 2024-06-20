@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class ActivityController extends Controller
                       ->select('activities.*', 'users.name as username')
                       ->orderBy('activities.id', 'desc')
                       ->get();
-      return view('activities.index', ['activities' => $activities]);
+      return view('admin.activities.index', ['activities' => $activities]);
     }
 
     public function create() {
@@ -27,7 +28,7 @@ class ActivityController extends Controller
                   ->get();
       $data = [ 'users' => $users ];
 
-      return view('activities.create', $data);
+      return view('admin.activities.create', $data);
     }
 
     public function store(Request $request) {
@@ -67,7 +68,7 @@ class ActivityController extends Controller
         'activity' => $activity,
         'users' => $users
       ];
-      return view('activities.edit', $data);
+      return view('admin.activities.edit', $data);
     }
 
     public function update(Request $request, $id){
