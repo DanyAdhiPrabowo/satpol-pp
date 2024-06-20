@@ -7,6 +7,9 @@ use App\Http\Controllers\Admin\ActivityController as AdminActivityController;
 use App\Http\Controllers\Admin\ReportController as AdminReportController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 
+use App\Http\Controllers\User\AuthController as UserAuthController;
+use App\Http\Controllers\User\DashboardController as UserDashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,15 +22,23 @@ use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return redirect()->route('user.login');
 });
+
+Route::get('/login', [UserAuthController::class, 'index'])->name('user.login');
+Route::post('/login', [UserAuthController::class, 'login']);
+
+Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+
+
+
+
+
 Route::get('/admin', function(){
     return redirect()->route('admin.login');
 });
 Route::get('admin/login', [AdminAuthController::class, 'index'])->name('admin.login');
 Route::post('admin/login', [AdminAuthController::class, 'login']);
-
-// Route::get('/dashboard', )
 
 Route::prefix('admin')-> middleware('auth')->group(function () {
 
