@@ -1,8 +1,12 @@
+@php
+  $isAdmin = request()->segment(1) === 'admin';
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
   <head>
-      <title>Admin - @yield('title')</title>
+      <title>@php ($isAdmin ? 'Admin':'User') @endphp - @yield('title')</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -18,9 +22,7 @@
       <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css">
   </head>
   <body class="">
-    @php
-      $isAdmin = request()->segment(1) === 'admin';
-    @endphp
+    
 
     <!-- Start Left Bar -->
     @if($isAdmin) 
@@ -41,14 +43,13 @@
         </a>
       </div>
       <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
-          <li>
-            <span data-toggle="modal" data-target="#logoutModal" style="cursor: pointer;">
+        <ul class="navbar-nav ml-auto" data-toggle="modal" data-target="#logoutModal" style="cursor: pointer; background: #2c3e50 ">
+          <li class=''>
+            <span >
               Logout 
               <i class="feather icon-log-out ml-2"></i>
             </span>
           </li>
-
         </ul>
       </div>
     </header>
@@ -77,7 +78,7 @@
 
 
 
-    <!-- Start Logut modal -->
+    <!-- Start Logout modal -->
     <div id="logoutModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="logoutModal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -99,7 +100,7 @@
         </div>
       </div>
     </div>
-    <!-- End Logut modal -->
+    <!-- End Logout modal -->
 
 
     <!-- Required Js -->

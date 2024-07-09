@@ -45,7 +45,7 @@
                             <th width='10px'>#</th>
                             <th>Nama</th>
                             <th>Petugas</th>
-                            <th>Tanggal</th>
+                            <th>Tanggal Kegiatan</th>
                             <th>Tempat</th>
                             <th>Status</th>
                             <th width='150px'>Aksi</th>

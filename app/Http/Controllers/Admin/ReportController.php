@@ -15,7 +15,7 @@ class ReportController extends Controller
                     ->join('users', 'users.id', '=', 'activities.user_id')
                     ->select('activities.*', 'users.name as username')
                     ->where('activities.status', 'done')
-                    ->orderBy('activities.date', 'ASC')
+                    ->orderBy('activities.updated_at', 'DESC')
                     ->get();
                     
     $data = [

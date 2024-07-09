@@ -6,7 +6,7 @@
     <div class="navbar-content scroll-div " >
       <div class="">
         <div class="main-menu-header">
-          <img class="img-radius" src="{{asset('assets/images/user/admin.png')}}" alt="User-Profile-Image">
+          <img class="img-radius" src="{{asset('assets/images/user/user.jpeg')}}" alt="User-Profile-Image">
           <div class="user-details">
             <span>{{session()->get('user')['name']}}</span>
             <div>User</div>

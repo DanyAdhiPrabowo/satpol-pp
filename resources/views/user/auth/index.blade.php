@@ -3,7 +3,7 @@
 
   <head>
 
-    <title>Flat Able - Premium Admin Template by Phoenixcoded</title>
+    <title>Satpol PP - User</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -21,7 +21,7 @@
   </head>
 
 <body>
-  <div class="auth-wrapper">
+  <div class="auth-wrapper" style="background: #2c3e50">
     <div class="auth-content text-center">
       <div class="card borderless">
         <div class="row align-items-center ">

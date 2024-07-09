@@ -28,7 +28,7 @@
                             <th width='10px'>#</th>
                             <th>Nama</th>
                             <th>Petugas</th>
-                            <th width='80px'>Tanggal</th>
+                            <th width='80px'>Tanggal Upload</th>
                             <th>Tempat</th>
                             <th>Foto</th>
                             <!-- <th>Aksi</th> -->
@@ -40,7 +40,7 @@
                           <td>{{$index+1}}</td>
                           <td>{{$data->name}}</td>
                           <td>{{$data->username}}</td>
-                          <td>{{$data->date}}</td>
+                          <td>{{$data->updated_at}}</td>
                           <td>{{$data->place}}</td>
                           <td>
                             @if($data->image)
