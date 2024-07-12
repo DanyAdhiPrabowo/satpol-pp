@@ -55,19 +55,21 @@
     </header>
     
     <div class="pcoded-main-container">
-      <div class="pcoded-content">
-          <div class="page-header">
-              <div class="page-block">
-                  <div class="row align-items-center">
-                      <div class="col-md-12">
-                        <div class="page-header-title">
-                          <h5 class="m-b-10">@yield('breadcrumbs')</h5>
+      <div class="{{View::hasSection('breadcrumbs') ? 'pcoded-content' : ''}}">
+          @hasSection('breadcrumbs')
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                          <div class="page-header-title">
+                            <h5 class="m-b-10">@yield('breadcrumbs')</h5>
+                          </div>
+                          @yield('second-breadcrumb')
                         </div>
-                        @yield('second-breadcrumb')
-                      </div>
-                  </div>
-              </div>
-          </div>
+                    </div>
+                </div>
+            </div>
+          @endif
           <div class="row">
             
             @yield('content')
