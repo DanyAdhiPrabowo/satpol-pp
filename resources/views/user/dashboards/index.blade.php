@@ -4,5 +4,5 @@
 
 
 @section('content')
-  <img src="{{asset('assets/images/user/dashboard.png')}}" width="1700px" height="1000px" alt="dashboard">
+  <img src="{{asset('assets/images/user/dashboard.jpeg')}}" width="100%"  alt="dashboard">
 @endsection
