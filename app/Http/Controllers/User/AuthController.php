@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 
 class AuthController extends Controller{
@@ -56,6 +57,37 @@ class AuthController extends Controller{
     $request->session()->put('user', $session);
     
     return redirect()->route('user.dashboard');
+  }
+
+  public function changePassword() {
+    return view('user.auth.changePassword');
+  }
+
+  public function updatePassword(Request $request) {
+    Validator::make($request->all(),[
+      'password' => 'required',
+      'newPassword' => 'required|min:8|max:50',
+      'confirmPassword' => 'required|min:8|max:50|same:newPassword',
+    ])->validate();
+
+    $id = Auth::user()->id;
+    $password = $request->input('password');
+    $newPassword = $request->input('newPassword');
+    
+    if(!Hash::check($password, Auth::user()->password)) {
+      return redirect()->route('user.change_password')
+        ->with('error', 'Password anda salah.');
+    }
+
+    $data = [
+      'password' => Hash::make($newPassword)
+    ];
+
+    User::where('id', $id)
+    ->update($data);
+    
+    return redirect()->route('user.change_password')
+      ->with('success', 'Password berhasil diubah.');
   }
 
   public function logout() {

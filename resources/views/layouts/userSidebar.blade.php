@@ -42,6 +42,14 @@
             <span class="pcoded-mtext">Lapor Kegiatan</span>
           </a>
         </li>
+        <li class="nav-item {{$url=='change-password'?'active':''}}">
+          <a href="{{url('change-password')}}" class="nav-link ">
+            <span class="pcoded-micon">
+              <i class="feather icon-lock"></i>
+            </span>
+            <span class="pcoded-mtext">Ganti Password</span>
+          </a>
+        </li>
       </ul>          
     </div>
   </div>

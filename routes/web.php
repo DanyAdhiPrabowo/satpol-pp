@@ -38,6 +38,9 @@ Route::middleware('auth', 'role:user')->group(function () {
   Route::get('report', [UserReportController::class, 'index'])->name('user.report.index');
   Route::post('report/{id}/upload', [UserReportController::class, 'upload']);
 
+  Route::get('change-password', [UserAuthController::class, 'changePassword'])->name('user.change_password');
+  Route::put('change-password', [UserAuthController::class, 'updatePassword']);
+
   Route::get('logout', [UserAuthController::class, 'logout'])->name('user.logout');
 });
 
